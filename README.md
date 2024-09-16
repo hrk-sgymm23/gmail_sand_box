@@ -5,16 +5,16 @@ wip...
 
 ## CloudRun Jobs
 
+```bash
+$ cd pubsub_jobs/
+```
+
 ### コンテナイメージビルドとpush
 ```bash
 $ gcloud builds submit --tag asia-northeast1-docker.pkg.dev/{GoogleCloudプロジェクト名}/{ArtifactRegistry名}/{イメージ名}:{タグ名}
 ```
 
 ### Jobs作成
-
-```bash
-$ cd pubsub_jobs/
-```
 
 ```bash
 $ gcloud run jobs create {ジョブ名}} \
