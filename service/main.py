@@ -14,7 +14,6 @@
 
 # [START cloudrun_pubsub_server]
 import base64
-
 from flask import Flask, request
 
 

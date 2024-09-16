@@ -6,7 +6,7 @@ wip...
 ## CloudRun Jobs
 
 ```bash
-$ cd pubsub_jobs/
+$ cd jobs/
 ```
 
 ### コンテナイメージビルドとpush

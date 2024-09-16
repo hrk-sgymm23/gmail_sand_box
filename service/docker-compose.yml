@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  pubsub-app:
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+    tty: true
+    volumes:
+      - .:/app
