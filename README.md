@@ -1,6 +1,7 @@
 # 各タスクの設定
 
 ## CloudRun Service
+wip...
 
 ## CloudRun Jobs
 
@@ -10,6 +11,10 @@ $ gcloud builds submit --tag asia-northeast1-docker.pkg.dev/{GoogleCloudプロ�
 ```
 
 ### Jobs作成
+
+```bash
+$ cd pubsub_jobs/
+```
 
 ```bash
 $ gcloud run jobs create {ジョブ名}} \
