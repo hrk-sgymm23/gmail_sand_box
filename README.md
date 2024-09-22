@@ -3,6 +3,27 @@
 ## CloudRun Service
 wip...
 
+### コンテナイメージビルドとpush
+
+```bash
+$ cd service/
+```
+
+```bash
+$ gcloud builds submit --tag asia-northeast1-docker.pkg.dev/{GoogleCloudプロジェクト名}/{ArtifactRegistry名}/{イメージ名}:{タグ名}
+```
+
+### CloudRun作成
+
+```bash
+gcloud run deploy {Run名} --image asia-northeast1-docker.pkg.dev/{GoogleCloudプロジェクト名}/{ArtifactRegistry名}/{イメージ名}:{タグ名} \  --no-allow-unauthenticated
+```
+
+### PubSubの疎通確認
+```bash
+gcloud pubsub topics publish {トピック名} --message "{任意の文字列}"
+```
+
 ## CloudRun Jobs
 
 ```bash

@@ -1,28 +1,13 @@
-# Copyright 2019 Google, LLC.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#    http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-# [START cloudrun_pubsub_server]
 import base64
+import os
 from flask import Flask, request
+import google.cloud.firestore
 
 
 app = Flask(__name__)
+dbname = os.environ['FIRESTORE_DB_NAME']
+db = google.cloud.firestore.Client(database=dbname)
 
-# [END cloudrun_pubsub_server]
-
-
-# [START cloudrun_pubsub_handler]
 @app.route("/", methods=["POST"])
 def index():
     """Receive and parse Pub/Sub messages."""
@@ -45,7 +30,9 @@ def index():
 
     print(f"Hello {name}!")
 
+    results = db.collection('human').stream()
+    data_list = [doc.to_dict() for doc in results]
+
+    print(data_list)
+
     return ("", 204)
-
-
-# [END cloudrun_pubsub_handler]
