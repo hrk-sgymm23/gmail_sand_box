@@ -11,6 +11,11 @@ $ cd service/
 $ docker compose up --build
 ```
 
+### Firebaseエミュレータの確認
+以下へアクセスできるか確認
+http://127.0.0.1:4000/
+
+
 ### Curlによる疎通確認
 ```bash
 # dataはbase64エンコードした値
