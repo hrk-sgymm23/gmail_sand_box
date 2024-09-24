@@ -2,11 +2,29 @@
 
 # CloudRun Service
 
+## 開発環境設定
+
+### コンテナイメージ ビルドと起動
+
+```bash
+$ cd service/
+$ docker compose up --build
+```
+
+### Curlによる疎通確認
+```bash
+# dataはbase64エンコードした値
+$ curl -X POST http://localhost:8080/ \
+    -H "Content-Type: application/json" \
+    -d '{"message": {"data": "SGVsbG8gd29ybGQ="}}'
+```
+
+
 ## Google Cloudへデプロイ
 ### コンテナイメージビルドとpush
 
 ```bash
-$ cd service/
+$ cd service/docker/run/
 ```
 
 ```bash
