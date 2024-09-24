@@ -24,6 +24,12 @@ $ curl -X POST http://localhost:8080/ \
     -d '{"message": {"data": "SGVsbG8gd29ybGQ="}}'
 ```
 
+コンテナのログより実行できていることを確認
+```bash
+service-pubsub-app-1  | [{'name': 'takeshi'}]
+service-pubsub-app-1  | Hello Hello world!
+```
+
 
 ## Google Cloudへデプロイ
 ### コンテナイメージビルドとpush
