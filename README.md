@@ -1,8 +1,8 @@
 # 各タスクの設定
 
-## CloudRun Service
-wip...
+# CloudRun Service
 
+## Google Cloudへデプロイ
 ### コンテナイメージビルドとpush
 
 ```bash
@@ -24,8 +24,9 @@ gcloud run deploy {Run名} --image asia-northeast1-docker.pkg.dev/{GoogleCloud�
 gcloud pubsub topics publish {トピック名} --message "{任意の文字列}"
 ```
 
-## CloudRun Jobs
+# CloudRun Jobs
 
+## Google Cloudへデプロイ
 ```bash
 $ cd jobs/
 ```
