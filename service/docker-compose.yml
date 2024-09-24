@@ -3,11 +3,46 @@ version: '3.8'
 services:
   pubsub-app:
     build:
-      context: .
+      context: ./docker/run
     ports:
       - "8080:8080"
     environment:
       - PORT=8080
+      - FIRESTORE_EMULATOR_HOST=firebase:8181
+      - GCLOUD_PROJECT=python-cloudrun-435707
     tty: true
     volumes:
-      - .:/app
+      - ./app:/app
+    depends_on:
+      - firebase
+    networks:
+      - app-network
+
+  firebase:
+    build:
+      context: .
+      dockerfile: ./docker/firebase/Dockerfile
+    tty: true
+    volumes:
+      - ./firebase/.firebaserc:/opt/firebase/.firebaserc
+      - ./firebase/firebase.json:/opt/firebase/firebase.json
+      - ./firebase/firestore.indexes.json:/opt/firebase/firestore.indexes.json
+      - ./firebase/firestore.rules:/opt/firebase/firestore.rules
+      - ./docker/firebase/bin/:/root/.cache:cached
+      - ./docker/firebase/config/:/root/.config:cached
+      - ./extensions:/opt/firebase/extensions
+      - ./data:/opt/firebase/data 
+    ports:
+      # - 9099:9099 # Firebase Authentication
+      - 8181:8181 # Cloud Firestore
+      # - 8085:8085 # Cloud Pub/Sub
+      - 4000:4000 # Emulator Suite UI
+
+    working_dir: /opt/firebase
+    command: sh -c "firebase emulators:start --only firestore && firebase emulators:export ./data/export_my_data -P default"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
