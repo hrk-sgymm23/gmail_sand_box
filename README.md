@@ -35,11 +35,13 @@ service-pubsub-app-1  | Hello Hello world!
 ### コンテナイメージビルドとpush
 
 ```bash
-$ cd service/docker/run/
+$ cd service/run/prd
 ```
 
 ```bash
-$ gcloud builds submit --tag asia-northeast1-docker.pkg.dev/{GoogleCloudプロジェクト名}/{ArtifactRegistry名}/{イメージ名}:{タグ名}
+$ docker build --platform linux/amd64 -t asia-northeast1-docker.pkg.dev/{GoogleCloudプロジェクト名}/{ArtifactRegistry名}/{イメージ名}:{タグ名} -f Dockerfile ../../../
+
+$ docker push asia-northeast1-docker.pkg.dev/{GoogleCloudプロジェクト名}/{ArtifactRegistry名}/{イメージ名}:{タグ名}
 ```
 
 ### CloudRun作成
