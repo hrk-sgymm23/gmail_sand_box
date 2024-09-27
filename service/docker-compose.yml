@@ -3,7 +3,7 @@ version: '3.8'
 services:
   pubsub-app:
     build:
-      context: ./docker/run
+      context: ./docker/run/dev
     ports:
       - "8080:8080"
     environment:

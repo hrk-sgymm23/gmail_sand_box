@@ -32,6 +32,7 @@ RUN pip install -r requirements.txt
 # Copy local code to the container image.
 ENV APP_HOME /app
 WORKDIR $APP_HOME
+# COPY . ./
 COPY . ./
 
 # Run the web service on container startup.

@@ -7,7 +7,6 @@ import google.cloud.firestore
 app = Flask(__name__)
 emulator_host = os.getenv('FIRESTORE_EMULATOR_HOST')
 
-
 print(f"{emulator_host=}")
 if emulator_host:
     print(f"Connecting to Firestore emulator at {emulator_host}")
